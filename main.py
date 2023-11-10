@@ -1,7 +1,11 @@
-from func import *
+from src.utilits.menu import *
+from src.management.insert import *
+from src.management.search import *
+from src.management.remove import *
+from src.management.edit import *
+from src.utilits.apresentation import *
 import json
 import os
-
 
 
 if os.path.exists("restaurants.json"):
@@ -12,9 +16,9 @@ if os.path.exists("restaurants.json"):
     print(data)
     
 else:
-    empty_dict = {}
+    #empty_dict = {}
     with open("restaurants.json",'w') as arquivo:
-        json.dump(empty_dict, arquivo)
+        json.dump(None, arquivo)
 
 restaurants = []
 
