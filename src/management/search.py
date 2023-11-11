@@ -1,31 +1,22 @@
-def search_restaurant(restaurants:list) -> int:
+def search_restaurant(restaurants:dict, key:str) -> int:
     """
-    Função que busca um restaurante pelo nome ou CNPJ.
+    Função que busca um restaurante pelo CNPJ.
+    Caso encontre retorna 1, caso não retorna 0
     
     Parâmetros:
         restaurants::list: lista de restaurantes
     Retorna:
-        id: int (o índice do restaurante na lista ou -1 se não for encontrado.)
+        result::int:  0 em caso de falha, 1 em caso de sucesso
     """
     # Opções para o usuário escolher como quer buscar o restaurante
-    opc = input('\nDeseja acessar por:\n\t1 - Nome do Restaurante\n\t2 - CNPJ do restaurante\n\nSua escolha: ')
-    key = ''
-    cont = 0
-    id = -1
+    
+    id = 0
 
     # Obtendo a chave de pesquisa (nome ou CNPJ) com base na escolha do usuário
-    if opc == '1':
-        key = input('Nome do restaurante: ').upper()
-    elif opc == '2':
-        key = input('CNPJ do restaurante: ')
-    
-    # Continuando a busca do restaurante, a função retorna o índice do restaurante
-    # ou -1 se não encontrá-lo na lista
-    for restaurant in restaurants:
-        if restaurant[int(opc)-1] == key:
-            id = cont
-            return id
-        cont += 1
+    for valid_keys in restaurants.keys():
+        if key == valid_keys:
+            id = 1
+            
     return id
 
 def search_item(restaurants: list, id: int) -> int:

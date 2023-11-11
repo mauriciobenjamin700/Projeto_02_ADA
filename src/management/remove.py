@@ -1,22 +1,16 @@
 from src.management.search import *
 
-def remove_restaurant(restaurants:list) -> None:
+def remove_restaurant(restaurants:dict, id:str) -> None:
     """
     Função para remover um restaurante da lista.
     Parâmetros:
-        restaurants::list: lista de restaurantes
+        restaurants::dict: Restaurantes Cadastrados
     return:
         None
     """
-    # Procurando o restaurante a ser removido
-    id = search_restaurant(restaurants)
-    
-    # Se o restaurante for encontrado, removendo-o da lista
-    if id != -1:
-        del restaurants[id]
-        print("\nRestaurante removido!")
-    else:
-        print("\nRestaurante não encontrado!")
+
+    del restaurants[id]
+
 
 def remove_item(restaurants: list, id: int) -> None:
     """

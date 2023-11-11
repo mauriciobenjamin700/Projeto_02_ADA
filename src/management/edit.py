@@ -1,6 +1,4 @@
-from search import *
-
-def modify_restaurant(restaurants:list) -> None:
+def modify_restaurant(restaurants:list, cnpj:str) -> None:
     """
     Função para modificar informações de um restaurante existente.
     O usuário pode escolher qual campo deseja alterar.
@@ -10,33 +8,35 @@ def modify_restaurant(restaurants:list) -> None:
     return:
         None
     """
-    # Procurando o restaurante a ser modificado
-    id = search_restaurant(restaurants)
+
+    opc = input('\nQual campo deseja alterar?\n\t1 - Nome\n\t2 - Endereço\n\t3 - Telefone\n\t4 - Tempo médio de entrega\n\nSua escolha: ')
     
-    # Se o restaurante for encontrado
-    if id != -1:
-        # Solicitando ao usuário qual campo deseja modificar
-        opc = input('\nQual campo deseja alterar?\n\t1 - Nome\n\t2 - CNPJ\n\t3 - Endereço\n\t4 - Telefone\n\t5 - Tempo médio de entrega\n\nSua escolha: ')
+    # Verificando se a opção inserida é um número e está no intervalo correto
+    if opc.isnumeric():
+        opc = int(opc)
         
-        # Verificando se a opção inserida é um número e está no intervalo correto
-        if opc.isnumeric():
-            opc = int(opc)
+        match opc:
+            case 1:
+                restaurants[cnpj]["name"] = input("\nNovo nome: ")
             
-            if opc > 0 and opc < 6:
-                # Solicitando ao usuário o novo valor para o campo escolhido
-                data = input('\nInfome o novo valor para o respectivo campo: ')
-                restaurants[id][opc-1] = data
-                print("\nValor atualizado com sucesso!")
-            else:
-                print("\nOpção escolhida é invalida!")
-        
-        else:
-            print("\nOpção Invalida, insira apenas números!")        
+            case 2:
+                restaurants[cnpj]["address"] = input("\nNovo Endereço: ")
+                
+            case 3:
+                restaurants[cnpj]["phone"] = input("\nNovo Endereço: ")
+                
+            case 4:
+                restaurants[cnpj]["time"] = input("\nNovo Tempo médio de entrega: ")
+                
+            case _:
+                print("\nChave invalida!")
+    
     else:
-        print("\nRestaurante não encontrado!")
+        print("\nOpção Invalida, insira apenas números!")        
 
 
-def edit_item(restaurants: list, id: int) -> None:
+
+def edit_item(restaurants: list, id: int, idx:int) -> None:
     """
     Função para editar informações de um item em um restaurante específico.
     
@@ -47,8 +47,6 @@ def edit_item(restaurants: list, id: int) -> None:
     return:
         None
     """
-    # Procura o índice do item que será editado
-    idx = search_item(restaurants, id)
     
     # Se o item for encontrado
     if idx != -1:

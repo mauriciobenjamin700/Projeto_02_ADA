@@ -1,3 +1,6 @@
+import sys
+sys.path.append(r"../")
+
 from src.utilits.menu import *
 from src.management.insert import *
 from src.management.search import *
@@ -7,27 +10,32 @@ from src.utilits.apresentation import *
 import json
 import os
 
+FILE_NAME = "restaurants.json"
 
-if os.path.exists("restaurants.json"):
+"""
+r para leitura (read)
+w para escrita (write)
+a para adicionar (append)
+"""
+#   mode = ['r','w','a']
 
-    with open("restaurants.json",'r') as arquivo:
-        data = json.load(arquivo)
+if os.path.exists(FILE_NAME):
+
+    with open(FILE_NAME,'r') as arquivo:
+        restaurants = json.load(arquivo)
         
-    print(data)
-    
-else:
-    #empty_dict = {}
-    with open("restaurants.json",'w') as arquivo:
-        json.dump(None, arquivo)
+else: 
+    restaurants = {}
 
-restaurants = []
 
-#restaurants = {"cpnj": [nome, endereço, telefone, tempo medio de entrega]}
-
-#pessoas = {cpf: [nome, endereço, telefone, nascimento, conta bancaria]}
+"""
+estrutura do json
+{"cnpf": 1, "name":"IFOOD", "address": "Rua qualquer","phone": "1234512", "time": 30, "menu": []}
+"""
 
 opc = '' 
 id = '' 
+aux = ''
 
 while opc != '0':
     
@@ -36,17 +44,29 @@ while opc != '0':
     if opc == '-1':
         
         print('\nOpção invalida!\n')
-    
-    
+        
     elif opc == '11':
-        add_restaurant(restaurants)
+        if (add_restaurant(restaurants)):
+            print("Restaurante adicionado com sucesso!")
+            
+        else:
+            print("Falha ao Cadastrar o restaurante")
     
     elif opc == '12':
-        modify_restaurant(restaurants)
+        key = input('\nCNPJ do restaurante:  ')
+        
+        if search_restaurant(restaurants, key):
+            modify_restaurant(restaurants, key)
+        else:
+            print("\nRestaurante não encontrado!")
 
         
     elif opc == '13':
-        remove_restaurant(restaurants)
+        key = input('\nCNPJ do restaurante:  ')
+        if search_restaurant(restaurants, key):
+            remove_restaurant(restaurants, key)
+        else:
+            print("\nRestaurante não encontrado!")
     
     elif opc == '21':
         if len(restaurants) > 0:
@@ -88,3 +108,7 @@ while opc != '0':
 
 # Mensagem exibida ao encerrar o sistema.         
 print('\nSistema encerrado!')
+
+
+with open(FILE_NAME, 'w') as arquivo:
+    json.dump(restaurants, arquivo, indent=4)
