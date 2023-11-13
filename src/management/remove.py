@@ -12,24 +12,13 @@ def remove_restaurant(restaurants:dict, id:str) -> None:
     del restaurants[id]
 
 
-def remove_item(restaurants: list, id: int) -> None:
-    """
-    Função para remover um item do menu de um restaurante específico.
-    
-    Parâmetros:
-        restaurants::list: lista de restaurantes
-        id::int: indice do item que se deseja remover
-    
-    return:
-        None
-    
-    """
-    # Procura o índice do item que será removido
-    idx = search_item(restaurants, id)
-    
-    # Se o item for encontrado, remove-o da lista
-    if idx != -1:
-        del restaurants[id][-1][idx]
+def remove_item(restaurants: list, key:str, product_name:str) -> None:
+    sinal = 0
         
-    else:
-        print("\nRestaurante não encontrado!")
+    product_name = product_name.upper()
+        
+    if product_name in restaurants[key]["menu"]:
+        del restaurants[key]["menu"][product_name]
+        sinal = 1    
+    
+    return sinal

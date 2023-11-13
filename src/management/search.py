@@ -19,30 +19,10 @@ def search_restaurant(restaurants:dict, key:str) -> int:
             
     return id
 
-def search_item(restaurants: list, id: int) -> int:
-    """
-    Função para pesquisar um item no menu de um restaurante específico.
+def search_item(restaurants: list, key:str, name:str) -> int:
     
-    Parâmetros:
-        restaurants::list: Lista de todos os restaurantes.
-        id:int: Índice do restaurante em que se deseja buscar o item.
-    
-    return: 
-        idx::int: índice do item encontrado ou -1 se não encontrar.
-    """
-    cont = 0  # Inicializando um contador.
-    idx = -1  # Inicializando o índice de retorno com -1 (item não encontrado).
-    
-    # Verifica se o ID fornecido é válido
-    if id != -1:
-        # Solicita ao usuário o nome do produto que deseja buscar
-        name = input('\nNome do produto: ').upper()
+    sinal = 0
+    if name in restaurants[key]["menu"].keys():
+        sinal = 1
         
-        # Procura o produto no menu do restaurante especificado
-        for item in restaurants[id][-1]:
-            if item[0] == name:
-                idx = cont  # Atribui o valor do contador ao índice de retorno
-                return idx
-            cont += 1  # Incrementa o contador
-         
-    return idx
+    return sinal

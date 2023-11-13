@@ -34,77 +34,84 @@ estrutura do json
 """
 
 opc = '' 
-id = '' 
-aux = ''
 
 while opc != '0':
     
     opc = interface()
-
-    if opc == '-1':
+    
+    match opc:
+        case "-1":
+            print('\nOpção invalida!\n')
         
-        print('\nOpção invalida!\n')
-        
-    elif opc == '11':
-        if (add_restaurant(restaurants)):
-            print("Restaurante adicionado com sucesso!")
+        case '11':
+            if (add_restaurant(restaurants)):
+                print("Restaurante adicionado com sucesso!")  
+            else:
+                print("Falha ao Cadastrar o restaurante")
+    
+        case '12':
+            key = input('\nCNPJ do restaurante:  ')
             
-        else:
-            print("Falha ao Cadastrar o restaurante")
-    
-    elif opc == '12':
-        key = input('\nCNPJ do restaurante:  ')
-        
-        if search_restaurant(restaurants, key):
-            modify_restaurant(restaurants, key)
-        else:
-            print("\nRestaurante não encontrado!")
+            if search_restaurant(restaurants, key):
+                modify_restaurant(restaurants, key)
+            else:
+                print("\nRestaurante não encontrado!")
 
-        
-    elif opc == '13':
-        key = input('\nCNPJ do restaurante:  ')
-        if search_restaurant(restaurants, key):
-            remove_restaurant(restaurants, key)
-        else:
-            print("\nRestaurante não encontrado!")
+        case '13':
+            key = input('\nCNPJ do restaurante:  ')
+            if search_restaurant(restaurants, key):
+                remove_restaurant(restaurants, key)
+            else:
+                print("\nRestaurante não encontrado!")
     
-    elif opc == '21':
-        if len(restaurants) > 0:
-            add_item(restaurants)
-        else:
-            print("\nAinda não há restaurantes cadastrados na plataforma")
-    
-        
-    elif opc == '22':
-        
-        if len(restaurants) > 0:
-            id = search_restaurant(restaurants)
-            edit_item(restaurants, id)
-        else:
-            print("\nAinda não há restaurantes cadastrados na plataforma")
+        case '21':
             
-    
-    elif opc == '23':
+            if len(restaurants) > 0:
+                key = input('\nCNPJ do restaurante:  ')
+                id = search_restaurant(restaurants,key)
+                if(id):
+                    if(add_item(restaurants,key)):
+                        print("\nCadastrado com sucesso")
+                    else: 
+                        print("\nFalha ao Cadastrar")
+            else:
+                print("\nAinda não há restaurantes cadastrados na plataforma")
         
-        if len(restaurants) > 0:
-            id = search_restaurant(restaurants)
-
-            remove_item(restaurants, id)
-        else:
-            print("\nAinda não há restaurantes cadastrados na plataforma")
+        case '22':
+            if len(restaurants) > 0:
+                key = input('\nCNPJ do restaurante:  ')
+                id = search_restaurant(restaurants,key)
+                if(id):
+                    product_name = input("\nNome do Produto: ")
+                    valor = input("\nNovo valor para o produto: ")
+                    if(edit_item(restaurants, key, product_name, valor)): print("\nOperação Realizada com sucesso!")
+                    else: print("\nFalha ao editar item")
+            else:
+                print("\nAinda não há restaurantes cadastrados na plataforma")
+                
+        case '23':
+            if len(restaurants) > 0:
+                key = input('\nCNPJ do restaurante:  ')
+                id = search_restaurant(restaurants,key)
+                if(id):
+                    product_name = input("\nNome do Produto: ")
+                    if(remove_item(restaurants, key, product_name)): print("\nOperação Realizada com sucesso!")
+                    else: print("\nFalha ao remover item")
+            else:
+                print("\nAinda não há restaurantes cadastrados na plataforma")     
+                
+        case '31':
+            show_list_restaurants(restaurants)
     
-    elif opc == '31':
-        show_list_restaurants(restaurants)
+        case '32':
+            show_describ_all_restaurants(restaurants)
     
-    elif opc == '32':
-        show_describ_all_restaurants(restaurants)
-    
-    elif opc == '33':
-        id = low_time(restaurants)
-        if id >= 0:
-            show_restaurant(restaurants[id])
-        else:
-            print("\nAinda não há restaurantes cadastrados no sistema")
+        case '33':
+            key = low_time(restaurants)
+            if key != '':
+                show_restaurant(restaurants[key])
+            else:
+                print("\nAinda não há restaurantes cadastrados no sistema")
 
 # Mensagem exibida ao encerrar o sistema.         
 print('\nSistema encerrado!')

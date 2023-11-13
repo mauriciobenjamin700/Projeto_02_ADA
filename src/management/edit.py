@@ -36,36 +36,15 @@ def modify_restaurant(restaurants:list, cnpj:str) -> None:
 
 
 
-def edit_item(restaurants: list, id: int, idx:int) -> None:
-    """
-    Função para editar informações de um item em um restaurante específico.
+def edit_item(restaurants: list, key:str, product_name:str, valor:str) -> None:
+
+    sinal = 0
     
-    Parâmetros:
-        restaurants::list: lista de restaurantes
-        id::int: identificação do restaurante, sendo ela a posição que o mesmo se encontra na lista
-    
-    return:
-        None
-    """
-    
-    # Se o item for encontrado
-    if idx != -1:
-        # Solicita ao usuário qual campo do item deseja alterar
-        opc = input('\nQual campo deseja alterar?\n\t1 - Nome\n\t2 - Preço\n\nSua escolha: ')
+    product_name = product_name.upper()
         
-        # Verifica se a entrada é numérica e se está no intervalo correto
-        if opc.isnumeric():
-            opc = int(opc)
-            if opc > 0  and opc < 3:
-                # Solicita ao usuário o novo valor para o campo escolhido
-                data = input('\nInfome o novo valor para o respectivo campo: ')
-                # Atualiza o valor do campo escolhido no item
-                restaurants[id][-1][idx][opc-1] = data
-            else:
-                print("\nOpção escolhida é invalida")
-        else:
-            print("\nInforme um valor númerico!")
-                
-    else:
-        print("\nRestaurante não encontrado!")
+    if product_name in restaurants[key]["menu"]:
+        restaurants[key]["menu"][product_name] = valor
+        sinal = 1    
+    
+    return sinal
         

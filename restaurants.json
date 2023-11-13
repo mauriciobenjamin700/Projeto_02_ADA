@@ -4,8 +4,13 @@
         "cnpj": "1",
         "address": "1",
         "phone": "1",
-        "time": "1",
-        "menu": []
+        "time": "10",
+        "menu": {
+            "ARROZ": "10",
+            "FRANGO": "25",
+            "CARNE": "50",
+            "UVA": "12.50"
+        }
     },
     "2": {
         "name": "2",
@@ -13,30 +18,6 @@
         "address": "2",
         "phone": "2",
         "time": "2",
-        "menu": []
-    },
-    "3": {
-        "name": "3",
-        "cnpj": "3",
-        "address": "3",
-        "phone": "3",
-        "time": "3",
-        "menu": []
-    },
-    "4": {
-        "name": "4",
-        "cnpj": "4",
-        "address": "4",
-        "phone": "4",
-        "time": "4",
-        "menu": []
-    },
-    "7": {
-        "name": "7",
-        "cnpj": "7",
-        "address": "7",
-        "phone": "7",
-        "time": "7",
-        "menu": []
+        "menu": {}
     }
 }

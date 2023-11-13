@@ -22,17 +22,19 @@ def interface() -> str:
 
     opc = input('\nOpção desejada: ')
 
+    match opc:
+        case '1':
+            opc = gestao_restaurantes() 
 
-    if opc == '1':
-        opc = gestao_restaurantes() 
-    elif opc == '2':
-        opc = gestao_cardapios()
-    elif opc == '3':
-        opc = apresentacao_de_informacoes()
-    elif opc == '0':
-        opc = '0'
-    else:
-        opc = '-1'
+        case '2':
+            opc = gestao_cardapios()
+        
+        case '3':
+            opc = apresentacao_de_informacoes()
+        case '0':
+            opc = '0'
+        case _:
+            opc = '-1'
         
     return opc
 

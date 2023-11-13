@@ -1,5 +1,5 @@
 
-def show_restaurant(restaurant:list) -> None:
+def show_restaurant(restaurant:dict) -> None:
     """
     Exibe os dados de um restaurante.
     
@@ -11,10 +11,18 @@ def show_restaurant(restaurant:list) -> None:
     
     """
 
-    print(f'\n\tNome: {restaurant[0]}\n\tCNPJ: {restaurant[1]}\n\tEndereço: {restaurant[2]}\n\tTelefone: {restaurant[3]}\n\tTempo médio para um entrega: {restaurant[4]}')
+    print(f"""-----------------
+|Nome    : {restaurant["name"]}
+|CNFJ    : {restaurant["cnpj"]}
+|Endereço: {restaurant["address"]}
+|Telefone: {restaurant["phone"]}
+|Entrega : {restaurant["time"]}
+
+""")
+    
 
 
-def show_list_restaurants(restaurants:list):
+def show_list_restaurants(restaurants:dict):
     """
     Exibe uma lista de restaurantes cadastrados.
     
@@ -30,9 +38,9 @@ def show_list_restaurants(restaurants:list):
         print('\nRestaurantes Cadastrados: ')
         
         # Percorre cada restaurante na lista fornecida.
-        for restaurant in restaurants:
+        for key in restaurants.keys():
             # Imprime os detalhes do restaurante de forma formatada.
-            show_restaurant(restaurant)
+            show_restaurant(restaurants[key])
     
     else:
         print("\nNão há restaurantes cadastrados no sistema")
@@ -48,29 +56,29 @@ def show_describ_all_restaurants(restaurants: list) -> None:
         None
     """
     if len(restaurants) > 0:
-        # Imprime o cabeçalho para a lista de restaurantes cadastrados.
+
         print('\nRestaurantes Cadastrados: ')
         
-        # Percorre cada restaurante na lista fornecida.
-        for restaurant in restaurants:
-            # Imprime os detalhes do restaurante de forma formatada.
-            show_restaurant(restaurant)
+ 
+        for key in restaurants.keys():
+
+            show_restaurant(restaurants[key])
             
             # Verifica se o restaurante possui itens no menu.
-            if len(restaurant[-1])>0:
+            if len(restaurants[key]["menu"])>0:
                 # Imprime o cabeçalho para a lista de produtos disponíveis do restaurante.
                 print('Produtos Disponiveis: ')
                 
                 # Percorre cada item no menu do restaurante.
-                for item in restaurant[-1]:
+                for chave in restaurants[key]["menu"]:
                     # Imprime os detalhes do item de forma formatada.
-                    print(f'\n\t| {item[0]} | R${item[1]},00 |')
+                    print(f'\n\t| {chave} | R${restaurants[key]["menu"][chave]},00 |')
             else:
                 print("\nNão há itens disponiveis no cardapio ainda!")
     else:
         print("\nNão há restaurantes cadastrados no sistema")
 
-def low_time(restaurants:list) -> int:
+def low_time(restaurants:dict) -> int:
     """
     Função responsavel por análisar todos os restaurantes disponiveis na plataforma e
     retornar o restaurante com o menor tempo de entrega.
@@ -83,22 +91,17 @@ def low_time(restaurants:list) -> int:
         id::int: identificação da posição que o restaurante adequada se encontra caso existir
     """
     
-    id = -1
+    id = ''
+    menor = 999999
     
-    if len(restaurants) == 0:
-        print("\nNão há restaurantes cadastrados na plataforma")
-        
-    elif len(restaurants) == 1:
-        id+=1
     
-    else:
-        
-        maior = int(restaurants[0][4])
-    
-        for restaurant in restaurants:
-            id+=1
-        
-            if int(restaurant[4]) > maior:
-                maior = int(restaurant[4])
+    if len(restaurants) == 1:
+        id = restaurants.keys()
+    elif len(restaurants) > 1:
+        for key in restaurants.keys():
+
+            if int(restaurants[key]["time"]) < menor:
+                menor = int(restaurants[key]["time"])
+                id = key
         
     return id
