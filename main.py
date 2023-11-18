@@ -47,13 +47,14 @@ while opc != '0':
             if (add_restaurant(restaurants)):
                 print("\nRestaurante adicionado com sucesso!")  
             else:
-                print("\nFalha ao Cadastrar o restaurante")
+                print("\nFalha ao Cadastrar o restaurante.")
     
         case '12':
             key = input('\nCNPJ do restaurante:  ')
             
             if search_restaurant(restaurants, key):
                 modify_restaurant(restaurants, key)
+                print("\nRestaurante editado com sucesso!") 
             else:
                 print("\nRestaurante não encontrado!")
 
@@ -61,6 +62,7 @@ while opc != '0':
             key = input('\nCNPJ do restaurante:  ')
             if search_restaurant(restaurants, key):
                 remove_restaurant(restaurants, key)
+                print("\nRestaurante removido.") 
             else:
                 print("\nRestaurante não encontrado!")
     
@@ -73,7 +75,7 @@ while opc != '0':
                     if(add_item(restaurants,key)):
                         print("\nCadastrado com sucesso")
                     else: 
-                        print("\nFalha ao Cadastrar")
+                        print("\nFalha ao Cadastrar um novo item.")
             else:
                 print("\nAinda não há restaurantes cadastrados na plataforma")
         
@@ -84,7 +86,8 @@ while opc != '0':
                 if(id):
                     product_name = input("\nNome do Produto: ")
                     valor = input("\nNovo valor para o produto: ")
-                    if(edit_item(restaurants, key, product_name, valor)): print("\nOperação Realizada com sucesso!")
+                    if(edit_item(restaurants, key, product_name, valor)): 
+                        print("\nOperação Realizada com sucesso!")
                     else: print("\nFalha ao editar item")
             else:
                 print("\nAinda não há restaurantes cadastrados na plataforma")
@@ -95,7 +98,8 @@ while opc != '0':
                 id = search_restaurant(restaurants,key)
                 if(id):
                     product_name = input("\nNome do Produto: ")
-                    if(remove_item(restaurants, key, product_name)): print("\nOperação Realizada com sucesso!")
+                    if(remove_item(restaurants, key, product_name)): 
+                        print("\nOperação Realizada com sucesso!")
                     else: print("\nFalha ao remover item")
             else:
                 print("\nAinda não há restaurantes cadastrados na plataforma")     
