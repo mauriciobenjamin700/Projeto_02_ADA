@@ -19,5 +19,21 @@
         "phone": "2",
         "time": "2",
         "menu": {}
+    },
+    "3": {
+        "name": "3",
+        "cnpj": "3",
+        "address": "3",
+        "phone": "3",
+        "time": "3",
+        "menu": {}
+    },
+    "5": {
+        "name": "5",
+        "cnpj": "5",
+        "address": "5",
+        "phone": "5",
+        "time": "5",
+        "menu": {}
     }
 }

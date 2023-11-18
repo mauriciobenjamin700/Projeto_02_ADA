@@ -1,4 +1,3 @@
-from src.management.search import *
 def add_restaurant(restaurants:dict) -> int:
     """
     Função para adicionar um novo restaurante à lista de restaurantes.
@@ -20,9 +19,12 @@ def add_restaurant(restaurants:dict) -> int:
         address = input('Endereço: ').upper()
         phone = input('Telefone: ')
         time = input('Tempo médio de entrega [Minutos]: ')
+        cnpj = ''.join(filter(str.isdigit,cnpj))
         new_dict = {"name": name, "cnpj": cnpj,"address":address,"phone":phone,"time": time, "menu": {}}
         
         #restaurants.append([name, cnpj, address, phone, time, menu])
+        
+        
         
         restaurants[cnpj] = new_dict
 

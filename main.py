@@ -1,6 +1,5 @@
-import sys
-sys.path.append(r"../")
-
+#import sys
+#sys.path.append(r"../")
 from src.utilits.menu import *
 from src.management.insert import *
 from src.management.search import *
@@ -30,7 +29,7 @@ else:
 
 """
 estrutura do json
-{"cnpf": 1, "name":"IFOOD", "address": "Rua qualquer","phone": "1234512", "time": 30, "menu": []}
+{"cnpf": 1, "name":"IFOOD", "address": "Rua qualquer","phone": "1234512", "time": 30, "menu": {}}
 """
 
 opc = '' 
@@ -40,14 +39,15 @@ while opc != '0':
     opc = interface()
     
     match opc:
+        
         case "-1":
             print('\nOpção invalida!\n')
         
         case '11':
             if (add_restaurant(restaurants)):
-                print("Restaurante adicionado com sucesso!")  
+                print("\nRestaurante adicionado com sucesso!")  
             else:
-                print("Falha ao Cadastrar o restaurante")
+                print("\nFalha ao Cadastrar o restaurante")
     
         case '12':
             key = input('\nCNPJ do restaurante:  ')
@@ -57,7 +57,7 @@ while opc != '0':
             else:
                 print("\nRestaurante não encontrado!")
 
-        case '13':
+        case '13':  
             key = input('\nCNPJ do restaurante:  ')
             if search_restaurant(restaurants, key):
                 remove_restaurant(restaurants, key)

@@ -36,7 +36,7 @@ def modify_restaurant(restaurants:list, cnpj:str) -> None:
 
 
 
-def edit_item(restaurants: list, key:str, product_name:str, valor:str) -> None:
+def edit_item(restaurants:dict, key:str, product_name:str, valor:str) -> None:
 
     sinal = 0
     
