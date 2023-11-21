@@ -22,7 +22,7 @@ def show_restaurant(restaurant:dict) -> None:
     
 
 
-def show_list_restaurants(restaurants:dict):
+def show_restaurants_list(restaurants:dict):
     """
     Exibe uma lista de restaurantes cadastrados.
     
@@ -45,7 +45,7 @@ def show_list_restaurants(restaurants:dict):
     else:
         print("\nNão há restaurantes cadastrados no sistema")
         
-def show_describ_all_restaurants(restaurants: list) -> None:
+def show_complete_info(restaurants: list) -> None:
     """
     Exibe uma descrição detalhada de cada restaurante cadastrado, incluindo os itens do menu.
     
@@ -78,7 +78,7 @@ def show_describ_all_restaurants(restaurants: list) -> None:
     else:
         print("\nNão há restaurantes cadastrados no sistema")
 
-def low_time(restaurants:dict) -> int:
+def shortest_delivery_time(restaurants:dict) -> int:
     """
     Função responsavel por análisar todos os restaurantes disponiveis na plataforma e
     retornar o restaurante com o menor tempo de entrega.

@@ -24,13 +24,13 @@ def interface() -> str:
 
     match opc:
         case '1':
-            opc = gestao_restaurantes() 
+            opc = restaurants_list_management() 
 
         case '2':
-            opc = gestao_cardapios()
+            opc = restaurants_menu_management()
         
         case '3':
-            opc = apresentacao_de_informacoes()
+            opc = show_information()
         case '0':
             opc = '0'
         case _:
@@ -39,7 +39,7 @@ def interface() -> str:
     return opc
 
 
-def gestao_restaurantes() -> str:
+def restaurants_list_management() -> str:
     """
     Função responsavel por interagir com o usuário e descobrir o que ele deseja fazer.
 
@@ -75,7 +75,7 @@ def gestao_restaurantes() -> str:
     return opc
     
 # Função que exibe o menu de gerenciamento do cardápio
-def gestao_cardapios() -> str:   
+def restaurants_menu_management() -> str:   
     """
     Função responsavel por interagir com o usuário e descobrir o que ele deseja fazer.
 
@@ -112,7 +112,7 @@ def gestao_cardapios() -> str:
     return opc
 
 
-def apresentacao_de_informacoes() -> str:
+def show_information() -> str:
     """
     Função responsavel por interagir com o usuário e descobrir o que ele deseja fazer.
 

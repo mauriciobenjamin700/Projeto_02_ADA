@@ -1,11 +1,11 @@
 #import sys
 #sys.path.append(r"../")
-from src.utilits.menu import *
+from src.utils.menu import *
 from src.management.insert import *
 from src.management.search import *
 from src.management.remove import *
 from src.management.edit import *
-from src.utilits.apresentation import *
+from src.utils.presentation import *
 import json
 import os
 
@@ -105,13 +105,13 @@ while opc != '0':
                 print("\nAinda não há restaurantes cadastrados na plataforma")     
                 
         case '31':
-            show_list_restaurants(restaurants)
+            show_restaurants_list(restaurants)
     
         case '32':
-            show_describ_all_restaurants(restaurants)
+            show_complete_info(restaurants)
     
         case '33':
-            key = low_time(restaurants)
+            key = shortest_delivery_time(restaurants)
             if key != '':
                 show_restaurant(restaurants[key])
             else:
