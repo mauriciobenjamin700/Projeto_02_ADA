@@ -9,6 +9,7 @@ Desenvolver um sistema CRUD utilizando um arquivo JSON para "persistir" os dados
 - Julianna Dantas
 - Mauricio Benjamin
 - Neto Araújo
+- Abel Nandza
 
 ## Descrição
 Este repositório contém o projeto CRUD para gestão de restaurantes. O sistema permite a criação, leitura, atualização e exclusão de registros de restaurantes e seus respectivos cardápios utilizando um arquivo JSON para armazenamento dos dados.
