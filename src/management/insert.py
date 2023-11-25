@@ -5,11 +5,11 @@ def add_restaurant(restaurants:dict) -> int:
     Retorna 1 em caso de sucesso e 0 em caso de falha
     
     Parâmetros:
-        restaurants::list: lista onde os restaraurantes serão armazenados
+        restaurants::dict: lista onde os restaraurantes serão armazenados
     return:
         sinal::int: sinal correspondendo ao resultado da operação
     """
-    # Solicitando ao usuário as informações do novo restaurante
+    
     sinal = 1
     try:
         
@@ -39,9 +39,10 @@ def add_item(restaurants:dict, key:str) -> None:
     Função para adicionar um novo item ao menu de um restaurante.
     Parâmetros:
         restaurants::dict: lista de restaurantes
+        key::str: chave do dicionário que será adicionado o novo item
     
     return:
-        None
+        sinal::int: Sinalização para representar sucesso (1) e falha (0)
     """
     sinal = 1
     try:

@@ -4,14 +4,15 @@ def modify_restaurant(restaurants:list, cnpj:str) -> None:
     O usuário pode escolher qual campo deseja alterar.
     
     Parâmetros:
-        restaurants::list: lista de restaurantes
+        restaurants::dict: lista de restaurantes
+        cnpj::str: chave do dicionário que será buscado
     return:
         None
     """
 
     opc = input('\nQual campo deseja alterar?\n\t1 - Nome\n\t2 - Endereço\n\t3 - Telefone\n\t4 - Tempo médio de entrega\n\nSua escolha: ')
     
-    # Verificando se a opção inserida é um número e está no intervalo correto
+
     if opc.isnumeric():
         opc = int(opc)
         
@@ -37,7 +38,18 @@ def modify_restaurant(restaurants:list, cnpj:str) -> None:
 
 
 def edit_item(restaurants:dict, key:str, product_name:str, valor:str) -> None:
-
+    """
+    Função para modificar informações de um cardapio em um restaurante existente.
+    
+    Parâmetros:
+        restaurants::dict: lista de restaurantes
+        key::str: chave do dicionário que será buscado
+        product_name::str: Nome do produto que tera seus dados alterados.
+        valor::str: String representando o valor do produto que será alterado
+    return:
+        None
+    """
+    
     sinal = 0
     
     product_name = product_name.upper()

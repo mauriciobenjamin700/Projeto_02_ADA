@@ -4,8 +4,8 @@ def show_restaurant(restaurant:dict) -> None:
     Exibe os dados de um restaurante.
     
     Parâmetros:
-        restaurants::list: lista de restaurantes
-        
+        restaurants::dict: lista de restaurantes
+    
     return:
         None
     
@@ -27,19 +27,19 @@ def show_restaurants_list(restaurants:dict):
     Exibe uma lista de restaurantes cadastrados.
     
     Parâmetros:
-        restaurants::list: lista de restaurantes
+        restaurants::dict: lista de restaurantes
         
     return:
         None
     
     """
     if len(restaurants) > 0:
-        # Imprime o cabeçalho para a lista de restaurantes cadastrados.
+        
         print('\nRestaurantes Cadastrados: ')
         
-        # Percorre cada restaurante na lista fornecida.
+       
         for key in restaurants.keys():
-            # Imprime os detalhes do restaurante de forma formatada.
+            
             show_restaurant(restaurants[key])
     
     else:
@@ -50,7 +50,7 @@ def show_complete_info(restaurants: list) -> None:
     Exibe uma descrição detalhada de cada restaurante cadastrado, incluindo os itens do menu.
     
     Parâmetros:
-        restaurants::list: lista de restaurantes
+        restaurants::dict: lista de restaurantes
         
     return:
         None
@@ -64,14 +64,14 @@ def show_complete_info(restaurants: list) -> None:
 
             show_restaurant(restaurants[key])
             
-            # Verifica se o restaurante possui itens no menu.
+            
             if len(restaurants[key]["menu"])>0:
-                # Imprime o cabeçalho para a lista de produtos disponíveis do restaurante.
+                
                 print('Produtos Disponiveis: ')
                 
-                # Percorre cada item no menu do restaurante.
+                
                 for chave in restaurants[key]["menu"]:
-                    # Imprime os detalhes do item de forma formatada.
+                   
                     print(f'\n\t| {chave} | R${restaurants[key]["menu"][chave]},00 |')
             else:
                 print("\nNão há itens disponiveis no cardapio ainda!")
@@ -85,7 +85,7 @@ def shortest_delivery_time(restaurants:dict) -> int:
     função retorna -1 caso não encontre.
     
     Parâmetros:
-        restaurants::list: Lista contendo todos os restaurantes cadastrados na plataforma.
+        restaurants::dict: Lista contendo todos os restaurantes cadastrados na plataforma.
         
     Retorna:
         id::int: identificação da posição que o restaurante adequada se encontra caso existir

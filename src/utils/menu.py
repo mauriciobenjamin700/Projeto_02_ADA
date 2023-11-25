@@ -6,7 +6,7 @@ def interface() -> str:
     Parâmetros:
         None
     Retorna:
-        opc::int: identificação da operação que será realizada
+        opc::str: identificação da operação que será realizada
     """  
     # Exibe as opções da tela inicial
     print(('''
@@ -46,7 +46,7 @@ def restaurants_list_management() -> str:
     Parâmetros:
         None
     Retorna:
-        opc::int: identificação da operação que será realizada
+        opc::str: identificação da operação que será realizada
     """  
     print(('''
                     GESTAO DE RESTAURANTES
@@ -82,7 +82,7 @@ def restaurants_menu_management() -> str:
     Parâmetros:
         None
     Retorna:
-        opc::int: identificação da operação que será realizada
+        opc::str: identificação da operação que será realizada
     """ 
     print(('''
                         GESTAO DE CARDAPIO
@@ -119,7 +119,7 @@ def show_information() -> str:
     Parâmetros:
         None
     Retorna:
-        opc::int: identificação da operação que será realizada
+        opc::str: identificação da operação que será realizada
     """
     print(('''
                     VISUALIZAR INFORMACOES

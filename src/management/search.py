@@ -4,15 +4,14 @@ def search_restaurant(restaurants:dict, key:str) -> int:
     Caso encontre retorna 1, caso não retorna 0
     
     Parâmetros:
-        restaurants::list: lista de restaurantes
+        restaurants::dict: lista de restaurantes
+        key::str: chave do dicionário que será buscado
     Retorna:
         result::int:  0 em caso de falha, 1 em caso de sucesso
     """
-    # Opções para o usuário escolher como quer buscar o restaurante
     
     id = 0
 
-    # Obtendo a chave de pesquisa (nome ou CNPJ) com base na escolha do usuário
     for valid_keys in restaurants.keys():
         if key == valid_keys:
             id = 1
@@ -20,7 +19,17 @@ def search_restaurant(restaurants:dict, key:str) -> int:
     return id
 
 def search_item(restaurants: list, key:str, name:str) -> int:
+    """
+    Função que busca em restaurante pelo CNPJ um item no menu e retorna 1 para sucesso e 0 para falha
     
+    Parâmetros:
+        restaurants::dict: lista de restaurantes
+        key::str: chave do dicionário que será buscado
+        name::str: nome do item do menu que está sendo buscado.
+    Retorna:
+        result::int:  0 em caso de falha, 1 em caso de sucesso
+    """
+        
     sinal = 0
     if name in restaurants[key]["menu"].keys():
         sinal = 1
